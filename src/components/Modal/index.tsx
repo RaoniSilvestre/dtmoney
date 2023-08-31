@@ -1,6 +1,24 @@
 
-export function Modal(){
+import Modal from "react-modal"
+import { Container } from "./styled";
+
+interface ModalPopUpProps{
+
+    isOpen: boolean;
+
+}
+
+Modal.setAppElement('#root')
+
+export function ModalPopUp({isOpen}:ModalPopUpProps) {
+
     return(
-        <h1>hello world</h1>
+        <Modal
+        isOpen={isOpen}
+        >
+            <Container>
+            <h1>oii haha</h1>
+            </Container>
+        </Modal>
     )
 }
