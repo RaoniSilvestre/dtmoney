@@ -1,33 +1,36 @@
 //import styled from "styled-components";
+import { useState } from "react";
+import { ModalPopUp } from "./components/Modal";
 import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header";
 import { GlobalStyle } from "./styles/global";
-import { createServer } from 'miragejs';
+
+
 
 function App() {
 
-  createServer({
-    routes() {
-      this.namespace = 'api';
-      this.get('/transactions', () => {
-        return [
-          {
-            id: 1,
-            title: 'transaction 1',
-            amount: 400,
-            type: 'deposit',
-            category: 'Food',
-            createdAt: new Date()
-          }
-        ]
-      })
-    },
-  })
+  const  [isModalOpen, setIsModalOpen] = useState(false)
+
+  function handleOpenModal(){
+    setIsModalOpen(true)
+  }
+
+  function handleCloseModal(){
+    setIsModalOpen(false)
+  }
+
+
+
+
   return (
     <>
-      <Header />
+      <Header handleOpenModal={handleOpenModal}/>
       <Dashboard />
       <GlobalStyle />
+      <ModalPopUp
+      isOpen={isModalOpen}
+      onRequestClose={handleCloseModal}
+      />
     </>
   );
 }
