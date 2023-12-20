@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { darken } from "polished";
+import { darken, lighten } from "polished";
 
 export const Container = styled.form`
   h2{
@@ -56,10 +56,44 @@ export const TransactionTypeContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
 
+  button{
+    height: 4rem;
+    border: 1px solid #d7d7d7;
+    border-radius: 0.25rem;
+
+    background: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: border-color 0.3s;
+    &:hover{
+      border-color: ${darken(0.25, '#d7d7d7')};
+    }
+
+    span{
+      display: inline-block;
+      margin-left: 1rem;
+      font-size: 1rem;
+      color: var(--text-title);
+    }
+  
+  }
+
+  .green{
+    transition: background-color 0.5s;
+    background-color: ${lighten(0.3, '#33CC95')};
+  }
+
+  .red{
+    transition: background-color 0.5s;
+    background-color: ${lighten(0.3, '#E52E4D')};
+  }
+
 `
 
 export const RadioBox = styled.button`
-
   border: 1px solid #d7d7d7;
   height: 4rem;
   border-radius: 0.25rem;
