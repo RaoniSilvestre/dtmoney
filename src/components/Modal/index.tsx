@@ -2,7 +2,6 @@ import { Container, RadioBox, TransactionTypeContainer } from "./styled";
 import { useState, FormEvent } from "react";
 import { TransactionContext } from "../../TransactionsContext";
 import { useContext } from "react";
-import { api } from "../../services/api";
 import Modal from "react-modal";
 
 import incomeImg from "./../../assets/Entradas.svg"
