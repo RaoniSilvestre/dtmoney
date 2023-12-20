@@ -6,11 +6,26 @@ import totalImg from "../../assets/Total.svg";
 import { TransactionContext } from "../../TransactionsContext";
 
 export function Summary() {
-  const transactions = useContext(TransactionContext);
-  
+  const { transactions } = useContext(TransactionContext);
+
+  const totalDeposits = transactions.reduce((acc, transaction) => {
+    if (transaction.type === 'deposit') {
+      return acc + transaction.value;
+    }
+    return acc;
+  }, 0);
+
+  const totalWithdraws = transactions.reduce((acc, transaction) => {
+    if (transaction.type === 'withdraw') {
+      return acc + transaction.value;
+    }
+    return acc;
+  }, 0);
+
+  const total = totalDeposits - totalWithdraws;
   return (
     <Container>
-      
+
 
 
       <div>
@@ -18,7 +33,12 @@ export function Summary() {
           <p>Entradas</p>
           <img src={incomeImg} alt="Entradas" />
         </header>
-        <strong>R$1000,00</strong>
+        <strong>{new Intl.NumberFormat('pt-br',
+                  {
+                    style: 'currency',
+                    currency: 'BRL',
+                  }).format(totalDeposits)
+                }</strong>
       </div>
 
       <div>
@@ -26,7 +46,12 @@ export function Summary() {
           <p>Saídas</p>
           <img src={outcomeImg} alt="Saídas" />
         </header>
-        <strong>- R$500,00</strong>
+        <strong> - {new Intl.NumberFormat('pt-br',
+                  {
+                    style: 'currency',
+                    currency: 'BRL',
+                  }).format(totalWithdraws)
+                } </strong>
       </div>
 
       <div className="highlight-background">
@@ -34,7 +59,12 @@ export function Summary() {
           <p>Total</p>
           <img src={totalImg} alt="total" />
         </header>
-        <strong>R$500,00</strong>
+        <strong> {new Intl.NumberFormat('pt-br',
+                  {
+                    style: 'currency',
+                    currency: 'BRL',
+                  }).format(total)
+                } </strong>
       </div>
     </Container>
   );
