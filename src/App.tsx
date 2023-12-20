@@ -5,6 +5,8 @@ import { ModalPopUp } from "./components/Modal";
 import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header";
 import { GlobalStyle } from "./styles/global";
+import { TransactionProvider } from "./TransactionsContext";
+
 
 Modal.setAppElement("#root"); //Acessibilidade
 
@@ -20,19 +22,19 @@ function App() {
     setIsModalOpen(false)
   }
 
-
-
-
   return (
-    <>
+    <TransactionProvider>
+
       <Header handleOpenModal={handleOpenModal}/>
-      <Dashboard />
       <GlobalStyle />
+
+      <Dashboard />
+      
       <ModalPopUp
       isOpen={isModalOpen}
       onRequestClose={handleCloseModal}
       />
-    </>
+    </TransactionProvider>
   );
 }
 
