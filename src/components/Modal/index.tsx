@@ -1,7 +1,6 @@
 import { Container, RadioBox, TransactionTypeContainer } from "./styled";
 import { useState, FormEvent } from "react";
-import { TransactionContext } from "../../TransactionsContext";
-import { useContext } from "react";
+import { useTransactions } from "../../hooks/useTransactions";
 import Modal from "react-modal";
 
 import incomeImg from "./../../assets/Entradas.svg"
@@ -14,7 +13,7 @@ interface ModalPopUpProps {
 }
 
 export function ModalPopUp({ isOpen, onRequestClose }: ModalPopUpProps) {
-  const { createTransaction } = useContext(TransactionContext);
+  const { createTransaction } = useTransactions();
 
   const [title, setTitle] = useState('');
   const [value, setValue] = useState(0);

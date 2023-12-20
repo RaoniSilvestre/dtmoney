@@ -5,7 +5,7 @@ import { ModalPopUp } from "./components/Modal";
 import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header";
 import { GlobalStyle } from "./styles/global";
-import { TransactionProvider } from "./TransactionsContext";
+import { TransactionProvider } from "./hooks/useTransactions";
 
 
 Modal.setAppElement("#root"); //Acessibilidade
