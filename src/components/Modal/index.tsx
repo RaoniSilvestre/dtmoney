@@ -20,7 +20,6 @@ export function ModalPopUp({ isOpen, onRequestClose }: ModalPopUpProps) {
 
   function handleCreateNewTransaction(event: FormEvent) {
     event.preventDefault();
-    console.log({title, value, category, type});
 
     const data = {
       title,
@@ -28,7 +27,7 @@ export function ModalPopUp({ isOpen, onRequestClose }: ModalPopUpProps) {
       category,
       type
     }
-    
+
     api.post('/transactions', data);
   }
 
